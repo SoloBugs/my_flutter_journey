@@ -1,3 +1,5 @@
+import '../../domain/entities/video_post.dart';
+
 class LocalVideoModel {
   LocalVideoModel({
     required this.name,
@@ -17,4 +19,12 @@ class LocalVideoModel {
     likes: json['likes'] ?? 0,
     views: json['views'] ?? 0,
   );
-}
+
+  VideoPost toVideoPostEntity() => VideoPost (
+    caption: name,
+    videoUrl: videoUrl,
+    likes: likes,
+    views: views
+  ); 
+ 
+ }
