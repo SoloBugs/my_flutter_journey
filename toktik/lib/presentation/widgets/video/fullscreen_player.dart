@@ -67,8 +67,10 @@ class _FullScreenPlayerState extends State<FullScreenPlayer> {
             aspectRatio: controller.value.aspectRatio,
             child: Stack(
               children: [
-                GradientBackground(),
                 VideoPlayer(controller),
+                GradientBackground(
+                  stops: const [0.8, 1.0],
+                ),
                 Positioned(
                   bottom: 50,
                   left: 20,
