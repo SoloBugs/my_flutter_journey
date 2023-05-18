@@ -1,3 +1,5 @@
+export 'package:witgets_app/presentation/screens/animated/animated_screens.dart';
+
 export 'package:flutter/material.dart';
 export 'package:witgets_app/presentation/screens/app_tutorial/app_tutorial_screens.dart';
 export 'package:witgets_app/presentation/screens/infinite_scroll/infinite_scoll.dart';
