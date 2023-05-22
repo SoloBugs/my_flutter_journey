@@ -44,6 +44,10 @@ class _AppTutorialScreenState extends State<AppTutorialScreen> {
         setState(() {
           endReach = true;
         });
+      } else if (endReach && page <= (slides.length - 1.5)) {
+        setState(() {
+          endReach = false;
+        });
       }
     });
   }
@@ -84,7 +88,7 @@ class _AppTutorialScreenState extends State<AppTutorialScreen> {
                   right: 30,
                   child: FadeInRight(
                     from: 15,
-                    delay: const Duration(seconds: 1),
+                    delay: const Duration(milliseconds: 500),
                     child: FilledButton(
                       onPressed: () {
                         context.pop();
