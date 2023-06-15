@@ -60,6 +60,21 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
     imagesId.addAll([1, 2, 3, 4, 5].map((e) => lastId + e));
   }
 
+  Future<void> onRefresh() async {
+    isLoading = true;
+    setState(() {});
+
+    await Future.delayed(const Duration(seconds: 3));
+    if (!isMounted) return;
+
+    isLoading = false;
+    final lastId = imagesId.last;
+    imagesId.clear();
+    imagesId.add(lastId + 1);
+    addFiveItems();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,19 +83,22 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
         context: context,
         removeTop: true,
         removeBottom: true,
-        child: ListView.builder(
-            controller: scrollController,
-            itemCount: imagesId.length,
-            itemBuilder: (context, index) {
-              return FadeInImage(
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                  height: 300,
-                  placeholder:
-                      const AssetImage('assets/images/jar-loading.gif'),
-                  image: NetworkImage(
-                      'https://picsum.photos/id/${imagesId[index]}/500/300'));
-            }),
+        child: RefreshIndicator(
+          onRefresh: onRefresh,
+          child: ListView.builder(
+              controller: scrollController,
+              itemCount: imagesId.length,
+              itemBuilder: (context, index) {
+                return FadeInImage(
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: 300,
+                    placeholder:
+                        const AssetImage('assets/images/jar-loading.gif'),
+                    image: NetworkImage(
+                        'https://picsum.photos/id/${imagesId[index]}/500/300'));
+              }),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.pop(),
