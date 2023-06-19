@@ -1,4 +1,4 @@
-export 'package:witgets_app/presentation/screens/counter/counter_screem.dart';
+export 'package:witgets_app/presentation/screens/counter/counter_screen.dart';
 
 export 'package:witgets_app/presentation/screens/animated/animated_screens.dart';
 
