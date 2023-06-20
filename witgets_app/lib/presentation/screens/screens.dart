@@ -1,3 +1,5 @@
+export 'package:witgets_app/presentation/screens/theme_changer/theme_changer_screen.dart';
+
 export 'package:witgets_app/presentation/screens/counter/counter_screen.dart';
 
 export 'package:witgets_app/presentation/screens/animated/animated_screens.dart';
