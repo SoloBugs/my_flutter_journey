@@ -38,7 +38,8 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     return CustomScrollView(slivers: [
       const SliverAppBar(
         floating: true,
-        flexibleSpace: FlexibleSpaceBar(title: CustomAppbar()),
+        flexibleSpace:
+            FlexibleSpaceBar(centerTitle: true, title: CustomAppbar()),
       ),
       SliverList(
           delegate: SliverChildBuilderDelegate(
